@@ -11,7 +11,8 @@ const getStyle = (property, element = document.body) => {
     const cssCustomProperties = getCssCustomProperties()
     style = cssCustomProperties[property]
   } else {
-    style = window.getComputedStyle(element[0], null).getPropertyValue(property).replace(/^\s/, '')
+    if (element)
+      style = window.getComputedStyle(element, null).getPropertyValue(property).replace(/^\s/, '')
   }
 
   return style
